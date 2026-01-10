@@ -10,16 +10,16 @@ const instance = axios.create({
   },
 });
 
-interface FetchNotes {
+interface getNotes {
   notes: Note[];
   totalPages: number;
 }
 
-export async function fetchNotes(
+export async function getNotes(
   page: number = 1,
   search: string = ""
-): Promise<FetchNotes> {
-  const { data } = await instance.get<FetchNotes>("/notes", {
+): Promise<getNotes> {
+  const { data } = await instance.get<getNotes>("/notes", {
     params: {
       search,
       page,
