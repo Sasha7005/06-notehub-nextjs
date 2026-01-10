@@ -1,44 +1,29 @@
-"use client";
+// "use client";
 
-import { useQuery } from "@tanstack/react-query";
-import { useParams } from "next/navigation";
-import css from "./NoteDetails.module.css";
-import { getNotes } from "@/lib/api";
+// import { useQuery } from "@tanstack/react-query";
+// import css from "./NoteDetails.module.css";
+// import { getNotes } from "@/lib/api";
 
-function NoteDetailsClient() {
-  const { id } = useParams<{ id: string }>();
+// type Props = {
+//   page: number;
+//   query: string;
+// };
 
-  const {
-    data: note,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["note", id],
-    queryFn: () => getNotes(id),
-    refetchOnMount: false,
-  });
-  if (isLoading)
-    return (
-      <>
-        <p>Loading, please wait...</p>
-      </>
-    );
-  if (error || !note)
-    <>
-      <p>Something went wrong.</p>
-    </>;
+// export default function NoteDetailsClient({ page, query }: Props) {
+//   const { data, isLoading, error } = useQuery({
+//     queryKey: ["notes", page, query],
+//     queryFn: () => getNotes(page, query),
+//     refetchOnMount: false,
+//   });
 
-  return (
-    <div className={css.container}>
-      <div className={css.item}>
-        <div className={css.header}>
-          <h2>{note.title}</h2>
-        </div>
-        <p className={css.content}>{note.content}</p>
-        <p className={css.date}>Created date</p>
-      </div>
-    </div>
-  );
-}
+//   if (isLoading) return <p>Loading...</p>;
+//   if (error || !data) return <p>Something went wrong</p>;
 
-export default NoteDetailsClient;
+//   return (
+//     <ul className={css.container}>
+//       {data.map((note) => (
+//         <li key={note.id}>{note.title}</li>
+//       ))}
+//     </ul>
+//   );
+// }
