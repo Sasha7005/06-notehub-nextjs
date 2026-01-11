@@ -15,7 +15,7 @@ interface getNotes {
   totalPages: number;
 }
 
-export async function getNotes(
+async function getNotes(
   page: number = 1,
   search: string = ""
 ): Promise<getNotes> {
@@ -29,12 +29,18 @@ export async function getNotes(
   return data;
 }
 
-export async function createNote(newNote: NoteForm): Promise<Note> {
+async function getNoteById(id: string): Promise<Note> {
+  const { data } = await instance.get<Note>(`/notes/${id}`);
+  return data;
+}
+
+async function createNote(newNote: NoteForm): Promise<Note> {
   const { data } = await instance.post<Note>("/notes", newNote);
   return data;
 }
 
-export async function deleteNote(id: string): Promise<Note> {
+async function deleteNote(id: string): Promise<Note> {
   const { data } = await instance.delete<Note>(`/notes/${id}`);
   return data;
 }
+export { getNoteById, deleteNote, createNote, getNotes };
