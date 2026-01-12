@@ -1,4 +1,4 @@
-interface Note {
+export interface Note {
   id: string;
   title: string;
   createdAt: string;
@@ -7,12 +7,10 @@ interface Note {
   tag: Tag;
 }
 
-type Tag = "Todo" | "Work" | "Personal" | "Meeting" | "Shopping";
+export type Tag = "Todo" | "Work" | "Personal" | "Meeting" | "Shopping";
 
-interface NoteForm {
+export interface NoteForm {
   title: string;
   content: string;
   tag: Tag;
 }
-
-export type { Note, Tag, NoteForm };

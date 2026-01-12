@@ -8,8 +8,8 @@ import NoteClient from "./Notes.client";
 
 type NoteProps = {
   params: {
-    page: string;
-    query: string;
+    page?: string;
+    query?: string;
   };
 };
 
